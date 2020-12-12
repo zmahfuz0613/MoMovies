@@ -12,6 +12,8 @@ public class ContactUs {
     By clickContact = By.xpath("//div[@class=\"navbar-nav\"]/a");
     By inputName = By.id("validationCustom01");
     By inputEmail = By.id("validationCustom02");
+    By inputMessage = By.id("validationCustom03");
+    By clickButton = By.xpath("//div[@class=\"form-group\"]/button");
 
 
     @BeforeClass
@@ -45,6 +47,20 @@ public class ContactUs {
         validEmail(inputEmail, enterEmail);
         Thread.sleep(3000);
 
+        String enterMessage = "This is Selenium testNG practice";
+        validMessage(inputMessage, enterMessage);
+        Thread.sleep(3000);
+
+        clickSend(clickButton);
+
+    }
+
+    private void clickSend(By element) {
+        driver.findElement(element).click();
+    }
+
+    private void validMessage(By element, String text) {
+        driver.findElement(element).sendKeys(text);
     }
 
     private void validEmail(By element, String text) {
